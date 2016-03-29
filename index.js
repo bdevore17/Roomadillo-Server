@@ -18,6 +18,12 @@ var api = new ParseServer({
   masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   clientKey: process.env.CLIENT_KEY || '',
+  filesAdapter: new S3Adapter(
+    "AKIAIKVODC5P76AO3EPQ",
+    "oZiys2BeENO9dUBT/HjRzj4qbGE7P5+bdn6vFXUT",
+    "roomadillo",
+    {directAccess: true}
+  ),
   liveQuery: {
     classNames: ["Roommate", "Match"] // List of classes to support for query subscriptions
   }
