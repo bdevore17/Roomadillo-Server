@@ -25,7 +25,7 @@ var api = new ParseServer({
     "roomadillo",
     {directAccess: true}
   ),
-  facebookAppIds: ['481369008713905'],
+  facebookAppIds: ['481369008713905']
   // liveQuery: {
   //   classNames: ["Roommate", "Match"] // List of classes to support for query subscriptions
   // }
