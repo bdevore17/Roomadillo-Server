@@ -5,7 +5,7 @@ Parse.Cloud.define('hello', function(req, res) {
 
 Parse.Cloud.beforeSave(Parse.Object.extend("Roommate"), function(request, response) {
 	if(request.object.get("viewed") == null) {
-		request.object.set("viewed",[]);
+		request.object.set("viewed",[request.object.id]);
 	}
 	response.success();
 });
