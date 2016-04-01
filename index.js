@@ -25,10 +25,10 @@ var api = new ParseServer({
     "roomadillo",
     {directAccess: true}
   ),
-  facebookAppIds: ['481369008713905']
-  // liveQuery: {
-  //   classNames: ["Roommate", "Match"] // List of classes to support for query subscriptions
-  // }
+  facebookAppIds: ['481369008713905'],
+  liveQuery: {
+    classNames: ["Roommate", "Swipe"] // List of classes to support for query subscriptions
+  }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
