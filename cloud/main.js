@@ -19,7 +19,7 @@ Parse.Cloud.define('userSwiped', function(request, response) {
 	query.equalTo('roommate1',roommate);
 	console.log("user swiped is running!");
 
-	userQuery.first().then((swipe) => {
+	query.first().then((swipe) => {
     console.log("before save");
     //swipe.set("status",2);
     //userData.set("verificationCode", randomNumber);
