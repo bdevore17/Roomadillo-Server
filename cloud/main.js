@@ -9,3 +9,24 @@ Parse.Cloud.beforeSave(Parse.Object.extend("Roommate"), function(request, respon
 	}
 	response.success();
 });
+
+Parse.Cloud.define('userSwiped', function(request, response) {
+	var roommate = new Parse.Object.extend('Roommate');
+	roommate.id = request.params.roommate;
+	var query = new Parse.Query(Parse.Object.extend('Swipe'));
+	query.equalTo('roommate2',request.user);
+	query.equalTo('roommate1',roommate);
+	query.first({
+    success: function(swipe) {
+    	swipe.set("r2LikesR1",request.params.like);
+    	swipe.save().then(function() {
+        	response.success(list);
+    	});
+    },
+    error: function(error) {
+        response.error(error);
+    // error is an instance of Parse.Error.
+    }
+    });
+	//if(request.params)
+});
