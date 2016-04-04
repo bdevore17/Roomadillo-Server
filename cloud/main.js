@@ -24,7 +24,8 @@ Parse.Cloud.define('userSwiped', function(request, response) {
     	});
     },
     error: function(error) {
-        response.error(error+"error from userSwiped");
+    	console.log(error);
+        response.error("error from userSwiped");
     // error is an instance of Parse.Error.
     }
     });
