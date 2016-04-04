@@ -1,3 +1,6 @@
+var Roommate = Parse.Object.extend('Roommate');
+var Swipe = Parse.Object.extend('Swipe');
+
 
 Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi');
@@ -11,7 +14,6 @@ Parse.Cloud.beforeSave(Parse.Object.extend("Roommate"), function(request, respon
 });
 
 Parse.Cloud.define('userSwiped', function(request, response) {
-	var Roommate = Parse.Object.extend('Roommate');
 	var roommate = new Roommate();
 	roommate.id = request.params.roommate;
 	var query = new Parse.Query(Parse.Object.extend('Swipe'));
@@ -21,12 +23,19 @@ Parse.Cloud.define('userSwiped', function(request, response) {
 
 	query.first().then((swipe) => {
     console.log("before save");
-    //swipe.set("status",2);
-    //userData.set("verificationCode", randomNumber);
+    if(swipe != null){
+    	swipe.set('r2LikesR1',request.params.like);
+    }
+    else {
+    	swipe = new Swipe();
+      swipe.set('roommate1', request.user);
+      swipe.set('roommate2', roommate);
+      swipe.set('r1LikesR2',request.params.like);
+    }
     return swipe.save(null, { useMasterKey: true });
   }).then((userDataAgain) => {
     console.log('after save');
-    response.success('whatever you want to return');
+    response.success('success!');
   }, (error) => {
     console.log(error);
     response.error(error);
