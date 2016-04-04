@@ -54,7 +54,7 @@ app.get('/test', function(req, res) {
   res.sendFile(path.join(__dirname, '/public/test.html'));
 });
 
-app.get('/loaderio-196622781ce9d6d576b300d818e306dc'), function(req, res) {
+app.get('/loaderio-196622781ce9d6d576b300d818e306dc', function(req, res) {
   res.status(200).send('loaderio-196622781ce9d6d576b300d818e306dc');
 });
 
