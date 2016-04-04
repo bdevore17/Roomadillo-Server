@@ -18,10 +18,11 @@ Parse.Cloud.define('userSwiped', function(request, response) {
 	query.equalTo('roommate1',roommate);
 	query.first({
     success: function(swipe) {
-    	swipe.set("r2LikesR1",request.params.like);
-    	swipe.save().then(function() {
-        	response.success("succcess!");
-    	});
+    	// swipe.set("r2LikesR1",request.params.like);
+    	// swipe.save().then(function() {
+     //    	response.success("succcess!");
+    	// });
+		response.succcess("success!");
     },
     error: function(error) {
     	console.log(error);
