@@ -20,11 +20,11 @@ Parse.Cloud.define('userSwiped', function(request, response) {
     success: function(swipe) {
     	swipe.set("r2LikesR1",request.params.like);
     	swipe.save().then(function() {
-        	response.success(list);
+        	response.success("succcess!");
     	});
     },
     error: function(error) {
-        response.error(error);
+        response.error(error+"error from userSwiped");
     // error is an instance of Parse.Error.
     }
     });
