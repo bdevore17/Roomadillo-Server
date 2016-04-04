@@ -17,7 +17,7 @@ Parse.Cloud.define('userSwiped', function(request, response) {
 	var roommate = new Roommate();
 	roommate.id = request.params.roommate;
 	var query = new Parse.Query(Parse.Object.extend('Swipe'));
-	query.equalTo('roommate2',request.user);
+	query.equalTo('roommate2',request.user.get('roommate'));
 	query.equalTo('roommate1',roommate);
 	console.log("user swiped is running!");
 
@@ -28,7 +28,7 @@ Parse.Cloud.define('userSwiped', function(request, response) {
     }
     else {
     	swipe = new Swipe();
-      swipe.set('roommate1', request.user);
+      swipe.set('roommate1', request.user.get('roommate'));
       swipe.set('roommate2', roommate);
       swipe.set('r1LikesR2',request.params.like);
     }
