@@ -1,0 +1,20 @@
+
+var mailgun = require('mailgun-js')({
+    apiKey: 'key-0905c919be6c0e5cf135da967119269e',
+    domain: 'sandbox6d8a1b1d35254b0a91e1e36de63fcfc9.mailgun.org'
+});
+    //Parse.Cloud.useMasterKey();
+var data = {
+    from: 'Roomadillo Annoyer <annoyer@sandbox6d8a1b1d35254b0a91e1e36de63fcfc9.mailgun.org>',
+    to: 'sgiven96@gmail.com', //bdevore@qwerkapp.com;bhorowitz@qwerkapp.com;jkatz@qwerkapp.com;aschepps@qwerkapp.com',
+    subject: 'Just to Annoy you',
+    text: 'Clayton Kershaw will rupture his Ulnar Collateral Ligment this season.'
+};
+
+mailgun.messages().send(data, function(error, body) {
+    if (error == null) {
+        console.log(body);
+    } else {
+        console.log(error.toString());
+    }
+});
