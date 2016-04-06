@@ -20,11 +20,11 @@ Parse.Cloud.define('userSwiped', function(request, response) {
 	query.equalTo('roommate2',request.user.get('roommate'));
 	query.equalTo('roommate1',roommate);
 	console.log("user swiped is running!");
-
+  var matchFound == false;
 	query.first().then((swipe) => {
-    console.log("before save");
     if(swipe != null){
     	swipe.set('r2LikesR1',request.params.like);
+      matchFound = (swipe.get('r1LikesR2') == true && swipe.get('r2LikesR1') == true);
     }
     else {
     	swipe = new Swipe();
@@ -34,8 +34,7 @@ Parse.Cloud.define('userSwiped', function(request, response) {
     }
     return swipe.save(null, { useMasterKey: true });
   }).then((userDataAgain) => {
-    console.log('after save');
-    response.success('success!');
+    response.success(matchFound);
   }, (error) => {
     console.log(error);
     response.error(error);
