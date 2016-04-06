@@ -20,7 +20,7 @@ Parse.Cloud.define('userSwiped', function(request, response) {
 	query.equalTo('roommate2',request.user.get('roommate'));
 	query.equalTo('roommate1',roommate);
 	console.log("user swiped is running!");
-  var matchFound == false;
+  var matchFound = false;
 	query.first().then((swipe) => {
     if(swipe != null){
     	swipe.set('r2LikesR1',request.params.like);
