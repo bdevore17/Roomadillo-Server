@@ -45,7 +45,7 @@ app.use(mountPath, api);
 
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
-  res.status(200).send('Roomadillo\'s Server!');
+  res.status(200).send('Roomadillo\'s Server!!');
 });
 
 // There will be a test page available on the /test path of your server url
