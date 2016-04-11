@@ -1,0 +1,15 @@
+//var mailgun = require('mailgun-js')({apiKey:'key-6f429acf91f6cba19c649dccfb917796', domain: 'mg.qwerkapp.com'});
+    var Parse = require('parse/node');
+    Parse.initialize('plV5QtcyxzEv1BKAgUK2AdCXbHVrKX8lkYMU9Ajm','DTK9HwCYR1l456GAdCIWraCaVqTofkkje62q8VXz','XKSMclbp4LLS1x90roP4GiRik51re50OVyuuBWrj');
+    Parse.serverURL = 'https://roomadillo-server.herokuapp.com/parse';
+    //Parse.Cloud.useMasterKey();
+    var query = new Parse.Query(Parse.Object.extend("Swipe"));
+    console.log("remove Swipes running!");
+    query.find().then(function(swipes){
+      return Parse.Object.destroyAll(swipes, { useMasterKey: true });
+    }).then(function() {
+      console.log("Swipes removed!");
+    }, function(error) {
+      console.log(error);
+      response.error(error);
+    });
