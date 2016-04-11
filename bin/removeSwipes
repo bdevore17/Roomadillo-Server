@@ -13,3 +13,19 @@
       console.log(error);
       response.error(error);
     });
+
+    var roommateQuery = new Parse.Query(Parse.Object.extend("Roommate"));
+    roommateQuery.notEqualTo("viewed", []);
+    console.log("remove arrays running!");
+    roommateQuery.find().then(function(roommates){
+      console.log(roommates);
+      for(var i=0; i<roommates.length; i++){
+        roommates[i].set("viewed",[]);
+      }
+      return Parse.Object.saveAll(roommates, { useMasterKey: true });
+    }).then(function() {
+      console.log("Arrays Cleared!");
+    }, function(error) {
+      console.log(error);
+      response.error(error);
+    });
