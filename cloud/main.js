@@ -25,6 +25,8 @@ Parse.Cloud.define('userSwiped', function(request, response) {
     if(swipe != null){
     	swipe.set('r2LikesR1',request.params.like);
       matchFound = (swipe.get('r1LikesR2') == true && swipe.get('r2LikesR1') == true);
+      if(!matchFound)
+        return swipe.destroy(null, {useMasterKey: true});
     }
     else {
     	swipe = new Swipe();
