@@ -13,6 +13,13 @@ Parse.Cloud.beforeSave(Parse.Object.extend("Roommate"), function(request, respon
 	response.success();
 });
 
+Parse.Cloud.beforeSave(Parse.User, function(request, response) {
+  if(request.object.get("viewed") == null) {
+    request.object.set("viewed",[]);
+  }
+  response.success();
+});
+
 Parse.Cloud.define('userSwiped', function(request, response) {
 	var roommate = new Roommate();
 	roommate.id = request.params.roommate;
@@ -43,3 +50,4 @@ Parse.Cloud.define('userSwiped', function(request, response) {
   });
 	//if(request.params)
 });
+
