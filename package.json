@@ -17,7 +17,9 @@
     "parse-dashboard": "~1.0.9"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": {
+      "node index.js", "node node_modules/parse-dashboard/parse-dashboard/index.js"
+    }
   },
   "engines": {
     "node": ">=4.3"
