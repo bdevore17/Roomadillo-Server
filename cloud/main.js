@@ -51,3 +51,13 @@ Parse.Cloud.define('userSwiped', function(request, response) {
 	//if(request.params)
 });
 
+Parse.Cloud.define('getUserInfo', function(request, response) {
+  var roommate = new Roommate();
+  // parameters: roommate id 
+  //check swipes for match
+  //query user for roommate matching roommate id
+  //respond with JSON RMSID and phone number
+});
+
+
+
