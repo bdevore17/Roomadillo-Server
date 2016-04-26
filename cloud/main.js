@@ -22,6 +22,7 @@ Parse.Cloud.beforeSave(Parse.User, function(request, response) {
     response.success();
     return;
   }
+  console.log(request.object.get('phoneNumber').substring(0,1));
   if(parseInt(request.object.get('phoneNumber').substring(0,1)) == null) {
     var phoneNumber = request.object.get('phoneNumber');
     var cleanPhoneNumber = "";
