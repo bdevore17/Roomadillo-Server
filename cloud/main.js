@@ -6,16 +6,24 @@ Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi');
 });
 
-Parse.Cloud.beforeSave(Parse.Object.extend("Roommate"), function(request, response) {
-	if(request.object.get("viewed") == null) {
-		request.object.set("viewed",[]);
+Parse.Cloud.beforeSave(Parse.Object.extend('Roommate'), function(request, response) {
+	if(request.object.get('viewed') == null) {
+		request.object.set('viewed',[]);
 	}
 	response.success();
 });
 
 Parse.Cloud.beforeSave(Parse.User, function(request, response) {
-  if(request.object.get("viewed") == null) {
-    request.object.set("viewed",[]);
+  if(request.object.get('viewed') == null) {
+    request.object.set('viewed',[]);
+  }
+  if(phoneNumber == null){
+    response.success();
+    return;
+  }
+  if(parseInt(request.object.get('phoneNumber').substring(0,1)) == null) {
+    var phoneNumber = request.object.get('phoneNumber');
+    //request.object.set('phoneNumber',cleanPhoneNumber);
   }
   response.success();
 });
