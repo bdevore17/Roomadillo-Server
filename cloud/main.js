@@ -53,7 +53,7 @@ Parse.Cloud.define('userSwiped', function(request, response) {
 
 Parse.Cloud.define('getUserInfo', function(request, response) {
   var roommate = new Roommate();
-  roommate.id = request.params.roommatedId;
+  roommate.id = request.params.roommateId;
   var userRoomate = request.user.get("roommate");
   var q1 = new Parse.Query(Parse.Object.extend('Swipe'));
   q1.equalTo('roommate2', userRoomate);
@@ -82,8 +82,4 @@ Parse.Cloud.define('getUserInfo', function(request, response) {
     console.log(error);
     response.error(error);
   });
-
 });
-
-
-
