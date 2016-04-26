@@ -14,7 +14,7 @@ Parse.Cloud.beforeSave(Parse.Object.extend('Roommate'), function(request, respon
 });
 
 Parse.Cloud.beforeSave(Parse.User, function(request, response) {
-  console.log("beginning of beforeSave");
+  // console.log("beginning of beforeSave");
   if(request.object.get('viewed') == null) {
     request.object.set('viewed',[]);
   }
@@ -22,8 +22,8 @@ Parse.Cloud.beforeSave(Parse.User, function(request, response) {
     response.success();
     return;
   }
-  console.log(parseInt(request.object.get('phoneNumber').substring(0,1)));
-  if(parseInt(request.object.get('phoneNumber').substring(0,1)) == null) {
+  // console.log(parseInt(request.object.get('phoneNumber').substring(0,1)));
+  if(parseInt(request.object.get('phoneNumber').substring(0,1)) == NaN) {
     console.log("inside if");
     var phoneNumber = request.object.get('phoneNumber');
     var cleanPhoneNumber = "";
