@@ -23,7 +23,7 @@ Parse.Cloud.beforeSave(Parse.User, function(request, response) {
     return;
   }
   // console.log(parseInt(request.object.get('phoneNumber').substring(0,1)));
-  if(parseInt(request.object.get('phoneNumber').substring(0,1)) == NaN) {
+  if(isNaN(parseInt(request.object.get('phoneNumber').substring(0,1))) {
     console.log("inside if");
     var phoneNumber = request.object.get('phoneNumber');
     var cleanPhoneNumber = "";
