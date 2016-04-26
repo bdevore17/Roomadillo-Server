@@ -23,7 +23,16 @@ Parse.Cloud.beforeSave(Parse.User, function(request, response) {
   }
   if(parseInt(request.object.get('phoneNumber').substring(0,1)) == null) {
     var phoneNumber = request.object.get('phoneNumber');
-    //request.object.set('phoneNumber',cleanPhoneNumber);
+    var cleanPhoneNumber = "";
+    for(var i =0; i<phoneNumber.length; i++){
+      if(isNaN(parseInt(phoneNumber[i].substr(0,1)))){
+        
+      }
+      else {
+        cleanPhoneNumber = cleanPhoneNumber + phoneNumber[i];
+      }
+    }
+    request.object.set('phoneNumber',cleanPhoneNumber);
   }
   response.success();
 });
