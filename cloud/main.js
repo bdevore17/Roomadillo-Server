@@ -14,6 +14,7 @@ Parse.Cloud.beforeSave(Parse.Object.extend('Roommate'), function(request, respon
 });
 
 Parse.Cloud.beforeSave(Parse.User, function(request, response) {
+  console.log("beginning of beforeSave");
   if(request.object.get('viewed') == null) {
     request.object.set('viewed',[]);
   }
