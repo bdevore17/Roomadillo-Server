@@ -61,11 +61,28 @@ Parse.Cloud.define('getUserInfo', function(request, response) {
   var q2 = new Parse.Query(Parse.Object.extend('Swipe'));
   q2.equalTo('roommate1', userRoomate);
   q2.equalTo('roommate2',roommate);
-  var query = new Parse.Query()
-  // parameters: roommate id
-  //check swipes for match
-  //query user for roommate matching roommate id
-  //respond with JSON RMSID and phone number
+
+  var matchQuery = Parse.Query.or(q2,q1);
+  matchQuery.equalTo('r1LikesR2', true);
+  matchQuery.equalTo('r2LikesR1', true);
+  matchQuery.first().then((swipe) => {
+    if(swipe != null){
+      var query = new Parse.Query(Parse.User);
+      query.equalTo('roommate', roommate);
+      return query.first();
+        // return swipe.destroy(null, {useMasterKey: true});
+    }
+    else {
+      response.error("Match not found");
+    }
+    return swipe.save(null, { useMasterKey: true });
+  }).then((userData) => {
+      response.success(userData.get('phoneNumber'));
+  }, (error) => {
+    console.log(error);
+    response.error(error);
+  });
+
 });
 
 
