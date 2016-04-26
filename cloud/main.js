@@ -24,14 +24,10 @@ Parse.Cloud.beforeSave(Parse.User, function(request, response) {
   }
   // console.log(parseInt(request.object.get('phoneNumber').substring(0,1)));
   if(isNaN(parseInt(request.object.get('phoneNumber').substring(0,1)))) {
-    console.log("inside if");
     var phoneNumber = request.object.get('phoneNumber');
     var cleanPhoneNumber = "";
     for(var i =0; i<phoneNumber.length; i++){
-      if(isNaN(parseInt(phoneNumber[i].substr(0,1)))){
-        
-      }
-      else {
+      if(!isNaN(parseInt(phoneNumber[i].substr(0,1)))){
         cleanPhoneNumber = cleanPhoneNumber + phoneNumber[i];
       }
     }
