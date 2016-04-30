@@ -62,7 +62,7 @@ app.get('/loaderio-196622781ce9d6d576b300d818e306dc', function(req, res) {
 var port = process.env.PORT || 1337;
 var httpServer = require('http').createServer(app);
 httpServer.listen(port, function() {
-    console.log('parse-server-example running on port ' + port + '.');
+    console.log('Roomadillo Server running on port ' + port + '.');
 });
 
 // This will enable the Live Query real-time server
